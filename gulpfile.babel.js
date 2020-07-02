@@ -18,7 +18,7 @@ export const styles = () => {
     return src('src/scss/main.scss')
     .pipe(gulpif(!PRODUCTION, sourcemaps.init()))
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulpif(PRODUCTION, postcss([ autoprefixer ])))
+    .pipe(gulpif(PRODUCTION, postcss([ autoprefixer({grid:true}) ])))
     .pipe(gulpif(PRODUCTION, cleanCss({compatibility: 'ie8'})))
     .pipe(gulpif(!PRODUCTION, sourcemaps.write()))
     .pipe(dest('dist/style'))
